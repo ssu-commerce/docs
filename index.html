@@ -26,7 +26,7 @@
     setBasePath: (basePath) => {
       const jsonSpec = system.getState().toJSON().spec.json;
       const newJsonSpec = Object.assign({}, jsonSpec, { basePath });
-
+      console.log(system.getState())
       console.log(newJsonSpec)
       return system.specActions.updateJsonSpec(newJsonSpec);
     }
@@ -53,10 +53,12 @@
           presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
           plugins: [SwaggerUIBundle.plugins.DownloadUrl,UrlMutatorPlugin],
           layout: "StandaloneLayout",
+          onComplete:()=>{
+            window.ui.setBasePath('http://ssu-commerc-ssu-commerce-8f9c7-24980534-497abc019db0.kr.lb.naverncp.com:8080/account');
+            window.ui.setBasePath('/account');
+          }   
         });
         window.ui = ui;
-        ui.setBasePath('http://ssu-commerc-ssu-commerce-8f9c7-24980534-497abc019db0.kr.lb.naverncp.com:8080/account');
-        ui.setBasePath('/account');
       };
     </script>
     <style>
