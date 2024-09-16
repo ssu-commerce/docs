@@ -12,8 +12,8 @@
         rootInjects: {
           setServer: () => {
             const jsonSpec = system.getState().toJSON().spec.json;
-            const server = system.getState().toJSON().spec.url.replace('http://ssu-commerc-ssu-commerce-8f9c7-24980534-497abc019db0.kr.lb.naverncp.com:8080/','').split('/')[0]
-            const servers = [{url: server}];
+            const service = system.getState().toJSON().spec.url.replace('http://ssu-commerc-ssu-commerce-8f9c7-24980534-497abc019db0.kr.lb.naverncp.com:8080/','').split('/')[0]
+            const servers = [{url: `http://ssu-commerc-ssu-commerce-8f9c7-24980534-497abc019db0.kr.lb.naverncp.com:8080/${service}`}];
             const newJsonSpec = Object.assign({}, jsonSpec, { servers });
             return system.specActions.updateJsonSpec(newJsonSpec);
           }
