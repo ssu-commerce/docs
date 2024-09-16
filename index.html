@@ -20,13 +20,14 @@
     setHost: (host) => {
       const jsonSpec = system.getState().toJSON().spec.json;
       const newJsonSpec = Object.assign({}, jsonSpec, { host });
-
+      console.log(newJsonSpec)
       return system.specActions.updateJsonSpec(newJsonSpec);
     },
     setBasePath: (basePath) => {
       const jsonSpec = system.getState().toJSON().spec.json;
       const newJsonSpec = Object.assign({}, jsonSpec, { basePath });
 
+      console.log(newJsonSpec)
       return system.specActions.updateJsonSpec(newJsonSpec);
     }
   }
@@ -54,6 +55,7 @@
           layout: "StandaloneLayout",
         });
         window.ui = ui;
+        ui.setBasePath('http://ssu-commerc-ssu-commerce-8f9c7-24980534-497abc019db0.kr.lb.naverncp.com:8080/account');
         ui.setBasePath('/account');
       };
     </script>
