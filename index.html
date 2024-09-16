@@ -10,13 +10,11 @@
     <script defer>
       const UrlMutatorPlugin = (system) => ({
         rootInjects: {
-          setServer: (server) => {
+          setServer: () => {
             const jsonSpec = system.getState().toJSON().spec.json;
+            const server = system.getState().toJSON().spec.url.replace('http://ssu-commerc-ssu-commerce-8f9c7-24980534-497abc019db0.kr.lb.naverncp.com:8080/','').split('/')[0]
             const servers = [{url: server}];
             const newJsonSpec = Object.assign({}, jsonSpec, { servers });
-            console.log(system)
-            console.log(system.getState().toJSON().spec)
-            console.log(system.getConfigs())
             return system.specActions.updateJsonSpec(newJsonSpec);
           }
         }
@@ -43,7 +41,7 @@
           plugins: [SwaggerUIBundle.plugins.DownloadUrl,UrlMutatorPlugin],
           layout: "StandaloneLayout",
           onComplete:()=>{
-            window.ui.setServer('http://ssu-commerc-ssu-commerce-8f9c7-24980534-497abc019db0.kr.lb.naverncp.com:8080/account');
+            window.ui.setServer();
           }   
         });
         window.ui = ui;
