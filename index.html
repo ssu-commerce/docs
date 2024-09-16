@@ -14,7 +14,7 @@
             const jsonSpec = system.getState().toJSON().spec.json;
             const servers = [{url: server}];
             const newJsonSpec = Object.assign({}, jsonSpec, { servers });
-            console.log(jsonSpec)
+            console.log(system)
             return system.specActions.updateJsonSpec(newJsonSpec);
           }
         }
